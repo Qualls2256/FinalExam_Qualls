@@ -19,21 +19,36 @@ public class Runner {
 
 	public static void main(String[] args) {
 
+		int startingNumber = 0;
+		String startingNumber_String = "";
 		int intBase10 = 0;
 		String hexAnswer = "";
+		
+		int yesNo = 0;
 
 		Runner myRunner = new Runner();
 		Converter myConverter = new Converter();
 
+		
+		
 		myRunner.welcome();
 
 		intBase10 = myRunner.enterInteger();
 
 		hexAnswer = myConverter.changeToHex(intBase10);
+		//hexAnswer = Integer.toHexString(startingNumber);
 
 		// for testing, remove all syso when done
-		System.out.println("0-255 entry: " + intBase10 + ", hex conversion: " + hexAnswer);
+		//System.out.println("0-255 entry: " + intBase10 + ", hex conversion: " + Integer.toHexString(intBase10).toUpperCase());
 
+		yesNo = JOptionPane.showConfirmDialog(null, "Would you like to repeat the system");
+		
+		JOptionPane.showMessageDialog(null, "0-255 entry: " + intBase10 + ", hex conversion: " + hexAnswer);
+
+		
+		if(yesNo == 1) System.exit(0);
+		else if(yesNo == 0) myRunner.main(null);
+		else JOptionPane.showMessageDialog(null, "You have Decided to not play again");
 		// now JOP the answer
 		// then JOP "Do you want to enter another 0-255 Yes or No"
 		// place this in a loop, keep looping as long as they answer Yes
@@ -41,9 +56,9 @@ public class Runner {
 	}
 
 	private int enterInteger() {
-		// code for you to complete
-		// for basic test return 0 (hex 00), or 255 (hex FF)
-		return 255;
+		String startingNumber_String = JOptionPane.showInputDialog("Please enter a number between 0-255");
+		int startingNumber = Integer.valueOf(startingNumber_String);
+		return startingNumber;
 	}
 
 	private void welcome() {

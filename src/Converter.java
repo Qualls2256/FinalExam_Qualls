@@ -7,6 +7,7 @@ public class Converter {
 			// JOP "Error, range outside of 0-255, please try again
 			return null;
 		}
+
 		// basic test
 		if (intBase10 == 0)
 			answer = "00";
